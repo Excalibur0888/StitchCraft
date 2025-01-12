@@ -12,6 +12,9 @@
     <header class="header">
         <div class="container">
             <a href="index.html" class="logo">StitchCraft</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
             <nav class="nav">
                 <ul class="nav__list">
                     <li><a href="index.html">Home</a></li>
@@ -25,7 +28,7 @@
     </header>
 
     <main>
-        <section class="page-hero">
+        <section class="page-hero about-hero">
             <div class="container">
                 <h1>About StitchCraft</h1>
                 <p>Crafting excellence since 2010</p>
@@ -36,12 +39,27 @@
             <div class="container">
                 <div class="story__grid">
                     <div class="story__content">
+                        <span class="section-tag">Our Journey</span>
                         <h2>Our Story</h2>
-                        <p>Founded in 2010, StitchCraft began with a simple mission: to provide exceptional tailoring services that combine traditional craftsmanship with modern style. Our journey started in a small workshop in Mumbai, where our founder's passion for precision and quality attracted a loyal clientele.</p>
+                        <p class="story__description">Founded in 2010, StitchCraft began with a simple mission: to provide exceptional tailoring services that combine traditional craftsmanship with modern style. Our journey started in a small workshop in Mumbai, where our founder's passion for precision and quality attracted a loyal clientele.</p>
                         <p>Today, we've grown into a premier tailoring establishment, serving clients across India with the same dedication to excellence that marked our beginnings. Our commitment to quality and customer satisfaction remains unwavering.</p>
+                        <div class="story__stats">
+                            <div class="stat-item">
+                                <span class="stat-number">13+</span>
+                                <span class="stat-label">Years of Excellence</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">10k+</span>
+                                <span class="stat-label">Happy Clients</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">Expert Tailors</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="story__image">
-                        <img src="" alt="StitchCraft workshop interior">
+                        <img src="img/interior.jpg" alt="StitchCraft workshop interior">
                     </div>
                 </div>
             </div>
@@ -49,23 +67,36 @@
 
         <section class="values">
             <div class="container">
-                <h2>Our Values</h2>
+                <span class="section-tag">What We Stand For</span>
+                <h2>Our Core Values</h2>
                 <div class="values__grid">
-                    <div class="value">
+                    <div class="value-card">
+                        <div class="value-card__icon">
+                            <img src="img/icons/quality-4-svgrepo-com.svg" alt="Quality icon">
+                        </div>
                         <h3>Quality First</h3>
-                        <p>We never compromise on the quality of our materials or craftsmanship</p>
+                        <p>We never compromise on the quality of our materials or craftsmanship. Every stitch is a testament to our commitment to excellence.</p>
                     </div>
-                    <div class="value">
+                    <div class="value-card">
+                        <div class="value-card__icon">
+                            <img src="img/icons/customer-service-svgrepo-com.svg" alt="Customer focus icon">
+                        </div>
                         <h3>Customer Focus</h3>
-                        <p>Your satisfaction is our priority in every stitch we make</p>
+                        <p>Your satisfaction is our priority. We listen, understand, and deliver exactly what you envision, ensuring a personalized experience.</p>
                     </div>
-                    <div class="value">
+                    <div class="value-card">
+                        <div class="value-card__icon">
+                            <img src="img/icons/flip-forward-energy-svgrepo-com.svg" alt="Innovation icon">
+                        </div>
                         <h3>Innovation</h3>
-                        <p>Blending traditional techniques with modern styling</p>
+                        <p>While respecting traditional techniques, we embrace modern technology and trends to provide contemporary solutions.</p>
                     </div>
-                    <div class="value">
+                    <div class="value-card">
+                        <div class="value-card__icon">
+                            <img src="img/icons/business-svgrepo-com.svg" alt="Integrity icon">
+                        </div>
                         <h3>Integrity</h3>
-                        <p>Honest service and transparent communication</p>
+                        <p>Honesty and transparency are at the core of our business. We build trust through ethical practices and clear communication.</p>
                     </div>
                 </div>
             </div>
@@ -73,25 +104,32 @@
 
         <section class="team">
             <div class="container">
-                <h2>Meet Our Expert Team</h2>
+                <span class="section-tag">Meet Our Experts</span>
+                <h2>Our Master Craftsmen</h2>
                 <div class="team__grid">
                     <div class="team-member">
-                        <img src="" alt="Master Tailor Rajesh Kumar">
+                        <div class="team-member__image">
+                            <img src="img/master1.jpg" alt="Rajesh Kumar - Master Tailor">
+                        </div>
                         <h3>Rajesh Kumar</h3>
-                        <p class="team-member__role">Master Tailor</p>
-                        <p>Over 25 years of experience in bespoke tailoring</p>
+                        <span class="team-member__role">Master Tailor</span>
+                        <p>Over 25 years of experience in bespoke suit making</p>
                     </div>
                     <div class="team-member">
-                        <img src="" alt="Design Specialist Priya Sharma">
+                        <div class="team-member__image">
+                            <img src="img/master2.jpg" alt="Priya Sharma - Head of Design">
+                        </div>
                         <h3>Priya Sharma</h3>
-                        <p class="team-member__role">Design Specialist</p>
-                        <p>Expert in contemporary fashion and traditional wear</p>
+                        <span class="team-member__role">Head of Design</span>
+                        <p>Fashion design expert specializing in contemporary styles</p>
                     </div>
                     <div class="team-member">
-                        <img src="" alt="Pattern Master Amit Patel">
-                        <h3>Amit Patel</h3>
-                        <p class="team-member__role">Pattern Master</p>
-                        <p>Specialized in creating perfect-fitting patterns</p>
+                        <div class="team-member__image">
+                            <img src="img/master3.jpg" alt="Anand Verma - Traditional Wear Specialist">
+                        </div>
+                        <h3>Anand Verma</h3>
+                        <span class="team-member__role">Traditional Wear Specialist</span>
+                        <p>Expert in traditional Indian formal wear</p>
                     </div>
                 </div>
             </div>
@@ -100,18 +138,22 @@
         <section class="workshop">
             <div class="container">
                 <div class="workshop__grid">
-                    <div class="workshop__image">
-                        <img src="" alt="StitchCraft tailoring workshop">
-                    </div>
                     <div class="workshop__content">
-                        <h2>Our Workshop</h2>
-                        <p>Our state-of-the-art workshop is equipped with the latest tailoring equipment while maintaining the essence of traditional craftsmanship. We believe in creating an environment where creativity meets precision.</p>
+                        <span class="section-tag">Our Facility</span>
+                        <h2>State-of-the-Art Workshop</h2>
+                        <p>Our modern workshop combines traditional craftsmanship with contemporary technology. Every detail is carefully considered to ensure the highest quality of work.</p>
                         <ul class="workshop__features">
-                            <li>Modern equipment</li>
-                            <li>Organized workspace</li>
-                            <li>Quality control area</li>
-                            <li>Comfortable fitting rooms</li>
+                            <li>Advanced measuring and cutting equipment</li>
+                            <li>Dedicated spaces for fittings and consultations</li>
+                            <li>Climate-controlled fabric storage</li>
+                            <li>Specialized workstations for intricate detailing</li>
                         </ul>
+                        <a href="contact.html" class="btn btn--large">Book a Visit</a>
+                    </div>
+                    <div class="workshop__gallery">
+                        <img src="img/mainarea.jpg" alt="Main tailoring area">
+                        <img src="img/fittingroom.jpg" alt="Fitting room">
+                        <img src="img/library.jpg" alt="Fabric library">
                     </div>
                 </div>
             </div>
@@ -160,5 +202,6 @@
             </div>
         </div>
     </footer>
+    <script src="js/main.js"></script>
 </body>
 </html> 
