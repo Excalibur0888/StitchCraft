@@ -69,4 +69,78 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Testimonials Slider
+    const slider = document.querySelector('.testimonials-slider');
+    if (slider) {
+        const track = slider.querySelector('.testimonials-track');
+        const slides = track.querySelectorAll('.testimonial');
+        const prevBtn = slider.querySelector('.slider-btn--prev');
+        const nextBtn = slider.querySelector('.slider-btn--next');
+        const dotsContainer = slider.querySelector('.slider-dots');
+        
+        let currentSlide = 0;
+        const slideCount = slides.length;
+
+        // Create dots
+        slides.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.classList.add('slider-dot');
+            dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = dotsContainer.querySelectorAll('.slider-dot');
+
+        // Initialize first slide
+        updateSlider();
+
+        // Event listeners
+        prevBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+            updateSlider();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % slideCount;
+            updateSlider();
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                updateSlider();
+            });
+        });
+
+        // Auto advance slides
+        let slideInterval = setInterval(autoAdvance, 5000);
+
+        slider.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(autoAdvance, 5000);
+        });
+
+        function autoAdvance() {
+            currentSlide = (currentSlide + 1) % slideCount;
+            updateSlider();
+        }
+
+        function updateSlider() {
+            // Update track position
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update active states
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+    }
 }); 
