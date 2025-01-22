@@ -82,6 +82,12 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentSlide = 0;
         const slideCount = slides.length;
 
+        // Touch events variables
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+        let startTranslate = 0;
+
         // Create dots
         slides.forEach((_, index) => {
             const dot = document.createElement('button');
@@ -95,16 +101,65 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize first slide
         updateSlider();
 
-        // Event listeners
-        prevBtn.addEventListener('click', () => {
-            currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+        // Touch event handlers
+        slider.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            startX = e.touches[0].clientX;
+            currentX = startX;
+            startTranslate = -currentSlide * 100;
+            track.style.transition = 'none';
+        }, { passive: true });
+
+        slider.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            
+            currentX = e.touches[0].clientX;
+            const diff = (currentX - startX) / slider.offsetWidth * 100;
+            let translate = startTranslate + diff;
+            
+            // Ограничиваем перемещение за пределы слайдера
+            if (translate > 0) {
+                translate = translate * 0.2;
+            } else if (translate < -(slideCount - 1) * 100) {
+                const overscroll = translate + (slideCount - 1) * 100;
+                translate = -(slideCount - 1) * 100 + overscroll * 0.2;
+            }
+            
+            track.style.transform = `translateX(${translate}%)`;
+        }, { passive: true });
+
+        slider.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            const diff = (currentX - startX) / slider.offsetWidth * 100;
+            track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            
+            if (Math.abs(diff) > 20) {
+                if (diff > 0 && currentSlide > 0) {
+                    currentSlide--;
+                } else if (diff < 0 && currentSlide < slideCount - 1) {
+                    currentSlide++;
+                }
+            }
+            
             updateSlider();
         });
 
-        nextBtn.addEventListener('click', () => {
-            currentSlide = (currentSlide + 1) % slideCount;
-            updateSlider();
-        });
+        // Event listeners
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                updateSlider();
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % slideCount;
+                updateSlider();
+            });
+        }
 
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
@@ -121,6 +176,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         slider.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(autoAdvance, 5000);
+        });
+
+        slider.addEventListener('touchstart', () => {
+            clearInterval(slideInterval);
+        });
+
+        slider.addEventListener('touchend', () => {
             slideInterval = setInterval(autoAdvance, 5000);
         });
 

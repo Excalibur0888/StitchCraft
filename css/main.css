@@ -989,11 +989,13 @@ ul {
 
 .testimonial {
     flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
     padding: 3rem;
     background: #fff;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    margin: 0 15px;
+    margin: 0;
     transform: scale(0.95);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid rgba(196, 163, 90, 0.1);
@@ -1028,7 +1030,7 @@ ul {
     font-weight: 600;
     color: #c4a35a;
     font-size: 1.1rem;
-    text-align: right;
+    text-align: center;
 }
 
 .slider-btn {
@@ -2112,20 +2114,25 @@ ul {
     margin: 0 auto;
     overflow: hidden;
     padding: 40px 0;
+    touch-action: pan-y pinch-zoom;
 }
 
 .testimonials-track {
     display: flex;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    width: 100%;
 }
 
 .testimonial {
-    flex: 0 0 97%;
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
     padding: 3rem;
     background: #fff;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    margin: 0 15px;
+    margin: 0;
     transform: scale(0.95);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid rgba(196, 163, 90, 0.1);
@@ -2160,7 +2167,6 @@ ul {
     font-weight: 600;
     color: #c4a35a;
     font-size: 1.1rem;
-    text-align: right;
 }
 
 .slider-btn {
@@ -2405,5 +2411,20 @@ ul {
     .timeline__item:nth-child(even)::after {
         left: -24px;
         right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .slider-btn {
+        display: none;
+    }
+    
+    .testimonials-slider {
+        padding: 20px 0;
+        cursor: grab;
+    }
+    
+    .testimonials-slider:active {
+        cursor: grabbing;
     }
 } 
